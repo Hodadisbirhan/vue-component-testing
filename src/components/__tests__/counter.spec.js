@@ -22,5 +22,7 @@ describe('counter', () => {
     const events = wrapper.emitted('updateCounter')
     console.log(events)
     expect(events).toHaveLength(2)
+    expect(events[0]).toEqual([1])
+    expect(events[1]).toEqual([2])
   })
 })
