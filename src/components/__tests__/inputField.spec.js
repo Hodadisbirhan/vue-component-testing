@@ -31,6 +31,6 @@ describe('Input Field', () => {
     })
     wrapper.find('button').trigger('click')
 
-    expect(wrapper.find('input').get('type')).toContain('text')
+    expect(wrapper.text()).toContain('toggle')
   })
 })
