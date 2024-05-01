@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import InputField from '@/components/h/inputField.vue'
+
 const factory = (props) => {
   return mount(InputField, props)
 }
@@ -25,9 +26,11 @@ describe('Input Field', () => {
         name: 'First Name',
         placeholder: 'First Name',
         label: 'First Name',
-        type: 'text'
+        type: 'password'
       }
     })
-    expect(wrapper.html()).toContain('First Name')
+    wrapper.find('button').trigger('click')
+
+    expect(wrapper.find('input').get('type')).toContain('text')
   })
 })
