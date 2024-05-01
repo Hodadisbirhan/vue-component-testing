@@ -11,6 +11,9 @@ const addList = () => {
   doing.value = ''
 }
 const { name } = object
+const r = ref({ samsone: ref('hodadis') })
+let { samsone } = r.value
+samsone = 'dakdj'
 </script>
 
 <template>
@@ -20,7 +23,7 @@ const { name } = object
 
       <button @click="addList">+ Add Task</button>
     </div>
-    {{ name + 1 }}
+    {{ name + 1 }}{{ r.samsone }}
     <ul>
       <li v-for="list in lists" :key="list.created_at">
         <span>{{ list.created_at }}</span>
