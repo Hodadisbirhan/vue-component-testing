@@ -20,6 +20,7 @@ const type = ref(props.type)
 const modelValue = defineModel()
 
 const toggle = () => {
+  console.log(type.value)
   type.value = type.value === 'password' ? 'text' : 'password'
 }
 </script>

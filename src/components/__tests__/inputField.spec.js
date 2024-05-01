@@ -19,7 +19,7 @@ describe('Input Field', () => {
 
     expect(wrapper.text()).toContain('First Name')
   })
-  it('checking the input field with id', () => {
+  it('checking the input field with id', async () => {
     const wrapper = factory({
       props: {
         id: 'name',
@@ -29,8 +29,8 @@ describe('Input Field', () => {
         type: 'password'
       }
     })
-    wrapper.find('button').trigger('click')
+    await wrapper.find('button').trigger('click')
 
-    expect(wrapper.text()).toContain('toggle')
+    expect(wrapper.find('input').attributes().type).toContain('text')
   })
 })
