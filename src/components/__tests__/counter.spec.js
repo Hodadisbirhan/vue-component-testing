@@ -14,4 +14,13 @@ describe('counter', () => {
 
     expect(wrapper.emitted()).toHaveProperty('updateCounter')
   })
+  test('checking  the argument of the event', () => {
+    const wrapper = factory()
+    wrapper.find('button').trigger('click')
+    wrapper.find('button').trigger('click')
+
+    const events = wrapper.emitted('updateCounter')
+    console.log(events)
+    expect(events).toHaveLength(2)
+  })
 })
