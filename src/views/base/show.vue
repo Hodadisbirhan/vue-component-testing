@@ -4,12 +4,13 @@ import { ref } from 'vue'
 const data = ref('Show')
 const doing = ref('')
 const lists = ref([])
-
+const object = { name: ref(1) }
 const addList = () => {
   if (!doing.value) return
   lists.value.push({ created_at: new Date(), name: doing.value })
   doing.value = ''
 }
+const { name } = object
 </script>
 
 <template>
@@ -19,7 +20,7 @@ const addList = () => {
 
       <button @click="addList">+ Add Task</button>
     </div>
-
+    {{ name + 1 }}
     <ul>
       <li v-for="list in lists" :key="list.created_at">
         <span>{{ list.created_at }}</span>
