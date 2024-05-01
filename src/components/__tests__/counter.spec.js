@@ -22,7 +22,15 @@ describe('counter', () => {
     const events = wrapper.emitted('updateCounter')
     console.log(events)
     expect(events).toHaveLength(2)
-    expect(events[0]).toEqual([1])
-    expect(events[1]).toEqual([2])
+    expect(events[0]).toEqual([11])
+    expect(events[1]).toEqual([12])
+  })
+  test('asserting the complex event', () => {
+    const wrapper = factory()
+    wrapper.find('button').trigger('click')
+    wrapper.find('button').trigger('click')
+    const events = wrapper.emitted('updateCounter')
+
+    expect(events).toEqual([[11], [12]])
   })
 })

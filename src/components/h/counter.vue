@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-const counter = ref(0)
+const counter = ref(10)
 const emits = defineEmits(['updateCounter'])
 const handleClick = () => {
   counter.value += 1
