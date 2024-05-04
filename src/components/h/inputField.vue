@@ -31,7 +31,14 @@ const toggle = () => {
       {{ label }}
     </label>
     <div class="inputParent">
-      <input :id="id" :name="name" :type="type" v-model="modelValue" :placeholder="placeholder" />
+      <input
+        :id="id"
+        :name="name"
+        :type="type"
+        :spellcheck="true"
+        v-model="modelValue"
+        :placeholder="placeholder"
+      />
       <button v-if="props.type === 'password'" @click="toggle">toggle</button>
     </div>
   </div>

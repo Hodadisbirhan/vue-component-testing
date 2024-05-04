@@ -40,7 +40,7 @@ header {
 }
 
 .outer {
-  width: 100vw;
+  width: 100%;
 }
 
 .main {
