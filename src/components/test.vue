@@ -1,13 +1,10 @@
 <template>
-    <div>
- <h1>Hi this git test</h1>
-    </div>
+  <div>
+    <h1>Hi this git test</h1>
+    <div>from hodadis</div>
+  </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
