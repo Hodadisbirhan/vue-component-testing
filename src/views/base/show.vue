@@ -1,10 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import HField from '@/components/h/inputField.vue'
-import { ref } from 'vue'
-const data = ref('Show')
+import { ref, inject } from 'vue'
+const data = ref<stringe>('Show')
 const doing = ref('')
 const lists = ref([])
 const object = { name: ref(1) }
+const das = inject('name')
+let names: number[] = []
+enum Size {
+  small = 1,
+  medium = 2,
+  large = 3
+}
 const addList = () => {
   if (!doing.value) return
   lists.value.push({ created_at: new Date(), name: doing.value })
@@ -13,13 +20,13 @@ const addList = () => {
 const { name } = object
 const r = ref({ samsone: ref('hodadis') })
 let { samsone } = r.value
-samsone = 'dakdj'
 </script>
 
 <template>
   <div class="parent">
     <div class="parentInner">
       <HField id="name" name="name" type="text" v-model="doing" placeholder="hodadis" />
+      {{ das }}
 
       <button @click="addList">+ Add Task</button>
     </div>
