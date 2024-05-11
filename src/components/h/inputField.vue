@@ -7,7 +7,7 @@ const props = defineProps({
     type: [String],
     required: true,
     validator: (value, props) => {
-      return ['password', 'text'].includes(value)
+      return ['password', 'text', 'email'].includes(value)
     }
   },
   label: { type: [String] },
