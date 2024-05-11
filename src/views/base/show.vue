@@ -50,7 +50,9 @@ let { samsone } = r.value
       <HField id="name" name="name" type="text" v-model="doing" placeholder="hodadis" />
       {{ das }}
       {{ select }}
-      <HSelect :list-value="listValue" v-model="select" label="Select Country"></HSelect>
+      <HSelect :list-value="listValue" v-model="select" label="Select Country">
+        <template #option="{ value }"> + {{ value.text }} </template>
+      </HSelect>
       <Stepper :name="step" @update:step="updateStep">
         <template #m="{ index }">
           <template v-if="index.id === currentStep">

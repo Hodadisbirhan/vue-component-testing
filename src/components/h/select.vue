@@ -33,7 +33,7 @@ const value = computed({
         :value="val.value"
         :selected="val.value === 'us'"
       >
-        {{ val.text }}
+        <slot name="option" :value="val"></slot>
       </option>
     </select>
   </div>
