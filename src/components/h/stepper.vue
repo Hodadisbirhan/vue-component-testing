@@ -4,20 +4,30 @@ const props = defineProps({
   name: { type: [Array, Object], required: true }
 })
 
-const currentStep = ref(1)
+const currentStep = ref(props.name[0].id)
 
 const emits = defineEmits(['update:step'])
 
 const previes = () => {
-  currentStep.value--
-  console.log(currentStep.value, '---')
-  emits('update:step', currentStep.value)
+  const indexOFA = props.name.findIndex((element) => {
+    return element?.id === currentStep.value
+  })
+
+  if (indexOFA > 0) {
+    currentStep.value = props.name[indexOFA - 1].id
+    emits('update:step', currentStep.value)
+  }
 }
 
 const handleSubmit = () => {
   console.log('hhhhhhhhhhh')
-  if (currentStep.value < props.name.length) {
-    currentStep.value++
+  const indexOFA = props.name.findIndex((element) => {
+    return element?.id === currentStep.value
+  })
+  console.log(indexOFA)
+
+  if (indexOFA < props.name.length - 1) {
+    currentStep.value = props.name[indexOFA + 1].id
     emits('update:step', currentStep.value)
   }
 }
@@ -26,7 +36,7 @@ const handleSubmit = () => {
 <template>
   <div>
     <div class="parent">
-      <div v-for="step in name" :key="step.id">
+      <div class="step" v-for="step in name" :key="step.id">
         <span class="circle">{{ step.id }}</span>
         <div class="line"></div>
       </div>
@@ -36,15 +46,49 @@ const handleSubmit = () => {
     </div>
 
     <form @submit.prevent="handleSubmit">
-      <div v-for="n in name" :key="n.title">
+      <div class="form" v-for="n in name" :key="n.title">
         <slot :name="n.title" :index="{ id: n.id }"></slot>
       </div>
 
       <div>
-        <button type="button" @click="previes" :disabled="currentStep === 1">Previos</button>
+        <button type="button" @click="previes">Previos</button>
 
         <button type="submit">Next</button>
       </div>
     </form>
   </div>
 </template>
+<style scoped>
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.step {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  justify-items: center;
+}
+.circle {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  color: black;
+}
+.line {
+  width: 3rem;
+  height: 0.2rem;
+  background-color: burlywood;
+}
+.parent {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  justify-items: center;
+}
+</style>

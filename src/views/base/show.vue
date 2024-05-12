@@ -49,6 +49,28 @@ const favoriteSubject = ref([])
 
 <template>
   <div class="parent">
+    <Stepper :name="step" @update:step="updateStep">
+      <template #m="{ index }">
+        <template v-if="index.id === currentStep">
+          <HField id="s" name="s" type="text" v-model="doing" placeholder="please add the Value" />
+          <HField id="name" name="name" type="text" v-model="doing" placeholder="hodadis" />
+        </template>
+      </template>
+
+      <template #l="{ index }">
+        <template v-if="index.id === currentStep">
+          <HField
+            id="pass"
+            name="pass"
+            type="password"
+            v-model="doing"
+            placeholder="what is the password Value"
+          />
+          <HField id="email" name="email" type="email" v-model="doing" placeholder="email" />
+        </template>
+      </template>
+    </Stepper>
+
     <div>{{ favoriteSubject }}</div>
 
     <div class="parentInner">
@@ -82,33 +104,6 @@ const favoriteSubject = ref([])
       <HSelect :list-value="listValue" v-model="select" label="Select Country">
         <template #option="{ value }"> + {{ value.text }} </template>
       </HSelect>
-      <Stepper :name="step" @update:step="updateStep">
-        <template #m="{ index }">
-          <template v-if="index.id === currentStep">
-            <HField
-              id="s"
-              name="s"
-              type="text"
-              v-model="doing"
-              placeholder="please add the Value"
-            />
-            <HField id="name" name="name" type="text" v-model="doing" placeholder="hodadis" />
-          </template>
-        </template>
-
-        <template #l="{ index }">
-          <template v-if="index.id === currentStep">
-            <HField
-              id="pass"
-              name="pass"
-              type="password"
-              v-model="doing"
-              placeholder="what is the password Value"
-            />
-            <HField id="email" name="email" type="email" v-model="doing" placeholder="email" />
-          </template>
-        </template>
-      </Stepper>
 
       <button @click="addList">+ Add Task</button>
     </div>

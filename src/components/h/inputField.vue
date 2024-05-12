@@ -39,7 +39,7 @@ const toggle = () => {
         v-model="modelValue"
         :placeholder="placeholder"
       />
-      <button v-if="props.type === 'password'" @click="toggle">toggle</button>
+      <!-- <button v-if="props.type === 'password'" @click="toggle">toggle</button> -->
     </div>
   </div>
 </template>
