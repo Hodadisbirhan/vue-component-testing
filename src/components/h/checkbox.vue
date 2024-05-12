@@ -18,7 +18,7 @@ const model = defineModel()
 
 <template>
   <div>
-    <input type="checkbox" :id="id" :name="name" v-model="model" />
+    <input type="checkbox" :id="id" :name="name" v-model="model" :value="value" />
     <label :for="id" v-if="label">{{ label }}</label>
   </div>
 </template>

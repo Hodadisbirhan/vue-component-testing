@@ -3,6 +3,7 @@ import HField from '@/components/h/inputField.vue'
 import { ref, inject } from 'vue'
 import Stepper from '@/components/h/stepper.vue'
 import HSelect from '@/components/h/select.vue'
+import HCheckbox from '@/components/h/checkbox.vue'
 const data = ref<stringe>('Show')
 const doing = ref('')
 const lists = ref([])
@@ -42,11 +43,39 @@ const listValue = [
 const { name } = object
 const r = ref({ samsone: ref('hodadis') })
 let { samsone } = r.value
+
+const favoriteSubject = ref([])
 </script>
 
 <template>
   <div class="parent">
+    <div>{{ favoriteSubject }}</div>
+
     <div class="parentInner">
+      <HCheckbox
+        v-model="favoriteSubject"
+        name="course"
+        id="math"
+        value="Maths"
+        label="Maths"
+      ></HCheckbox>
+
+      <HCheckbox
+        v-model="favoriteSubject"
+        name="course"
+        id="bio"
+        value="biology"
+        label="biology"
+      ></HCheckbox>
+
+      <HCheckbox
+        v-model="favoriteSubject"
+        name="course"
+        id="phy"
+        value="Physics"
+        label="Physics"
+      ></HCheckbox>
+
       <HField id="name" name="name" type="text" v-model="doing" placeholder="hodadis" />
       {{ das }}
       {{ select }}
