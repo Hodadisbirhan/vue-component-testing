@@ -74,7 +74,7 @@ const getIndex = (index) => {
         <slot :name="n.title" :index="{ id: n.id }"></slot>
       </div>
 
-      <div>
+      <div class="bottomForm">
         <button type="button" @click="previes">Previos</button>
 
         <button type="submit">Next</button>
@@ -93,6 +93,9 @@ const getIndex = (index) => {
   flex-direction: row;
   gap: 0;
   justify-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 .circle {
   width: 1rem;
@@ -114,5 +117,13 @@ const getIndex = (index) => {
   flex-direction: row;
   gap: 0;
   justify-items: center;
+
+  width: max-content;
+  margin: 0 auto;
+}
+.bottomForm {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
 }
 </style>
