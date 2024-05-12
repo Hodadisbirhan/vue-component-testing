@@ -26,7 +26,7 @@ const value = computed({
 <template>
   <div>
     <select v-model="value">
-      <option value="">{{ label }}</option>
+      <option value="" disabled>{{ label }}</option>
       <option
         v-for="val in listValue"
         :key="val.value"
@@ -38,3 +38,15 @@ const value = computed({
     </select>
   </div>
 </template>
+<style scoped>
+select {
+  background-color: transparent;
+  color: aliceblue;
+  outline: none;
+  border: 0.05rem solid aliceblue;
+}
+option {
+  color: black;
+  background-color: transparent;
+}
+</style>
