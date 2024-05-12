@@ -18,7 +18,8 @@ enum Size {
 
 const step = [
   { title: 'm', id: 1 },
-  { title: 'l', id: 2 }
+  { title: 'l', id: 2 },
+  { title: 'k', id: 4 }
 ]
 
 const addList = () => {
@@ -67,6 +68,11 @@ const favoriteSubject = ref([])
             placeholder="what is the password Value"
           />
           <HField id="email" name="email" type="email" v-model="doing" placeholder="email" />
+        </template>
+      </template>
+      <template #k="{ index }">
+        <template v-if="index.id === currentStep">
+          <div>Hi there fore K</div>
         </template>
       </template>
     </Stepper>

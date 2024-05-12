@@ -31,17 +31,41 @@ const handleSubmit = () => {
     emits('update:step', currentStep.value)
   }
 }
+const getIndex = (index) => {
+  return props.name.findIndex((element) => {
+    return element.id === index
+  })
+}
 </script>
 
 <template>
   <div>
     <div class="parent">
       <div class="step" v-for="step in name" :key="step.id">
-        <span class="circle">{{ step.id }}</span>
-        <div class="line"></div>
+        <span
+          class="circle"
+          :style="
+            step.id === currentStep
+              ? { borderWidth: '0.002rem', borderColor: 'blue', borderStyle: 'solid' }
+              : getIndex(step.id) < getIndex(currentStep)
+                ? { backgroundColor: 'blue' }
+                : {}
+          "
+          v-if="step.id !== name[name.length - 1].id"
+          >{{ step.id }}</span
+        >
+        <div class="line" v-if="step.id !== name[name.length - 1].id"></div>
       </div>
       <div>
-        <span class="circle"></span>
+        <span
+          class="circle"
+          :style="
+            currentStep === name[name.length - 1].id
+              ? { borderWidth: '0.002rem', borderColor: 'blue', borderStyle: 'solid' }
+              : {}
+          "
+          >{{ name[name.length - 1].id }}</span
+        >
       </div>
     </div>
 
